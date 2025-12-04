@@ -56,10 +56,18 @@
             </a>
           </li>
 
+          <!-- CV Link -->
+          <li class="nav-item">
+            <a class="nav-link" href="{{ '/assets/pdf/CV_Minchan_Kim.pdf' | relative_url }}" target="_blank">cv</a>
+          </li>
+
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
           {% for p in sorted_pages %}
             {% if p.nav and p.autogen == null %}
+              {% if p.title == 'cv' %}
+                {% continue %}
+              {% endif %}
               {% if p.dropdown %}
                 {% assign has_active_child = false %}
                 {% for child in p.children %}
