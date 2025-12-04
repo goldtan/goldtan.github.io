@@ -104,10 +104,16 @@
                     {%- assign url = p.permalink -%}
                   {%- elsif p.permalink contains '/blog/' -%}
                     {%- assign url = '/blog/' -%}
+                  {%- elsif p.cv_pdf -%}
+                    {%- if p.cv_pdf contains '://' -%}
+                      {%- assign url = p.cv_pdf -%}
+                    {%- else -%}
+                      {%- assign url = p.cv_pdf | prepend: 'assets/pdf/' | relative_url -%}
+                    {%- endif -%}
                   {%- else -%}
                     {%- assign url = p.url -%}
                   {%- endif %}
-                  <a class="nav-link" href="{{ url | relative_url }}">
+                  <a class="nav-link" href="{{ url | relative_url }}" {% if p.cv_pdf %}target="_blank"{% endif %}>
                     {{- p.title }}
                     {% if page.url contains p.url %}
                       <span class="sr-only">(current)</span>
