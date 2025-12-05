@@ -32,4 +32,4 @@ I received my B.B.A. & B.S. in Computer Science and M.S. in Data Science from Se
 
 I'm passionate about Graph Neural Networks (GNN), Retrieval Augmented Generation, and Recommendation System.
 
-I'm advised by [Prof. Hyunwoo Park](https://scholar.google.com/citations?user=8AWlAK4AAAAJ&hl=en) for my Ph.D. studies and was advised by Prof. Hakyeon Lee for my M.S. studies.
+I'm advised by [Prof. Hyunwoo Park](https://scholar.google.com/citations?user=8AWlAK4AAAAJ&hl=en) for my Ph.D. studies and was advised by [Prof. Hakyeon Lee](https://scholar.google.com/citations?user=AbopKDkAAAAJ&hl=ko) for my M.S. studies.
