@@ -6,11 +6,13 @@
       {%- if entry.abbr -%}
         {%- comment -%} Determine publication type and color {%- endcomment -%}
         {% assign pub_type_color = null %}
-        {% assign entry_text = entry.abbr | downcase | append: ' ' | append: entry.booktitle | downcase | append: ' ' | append: entry.note | downcase | append: ' ' | append: entry.journal | downcase %}
+        {% assign abbr_lower = entry.abbr | downcase %}
+        {% assign entry_text = abbr_lower | append: ' ' | append: entry.booktitle | downcase | append: ' ' | append: entry.note | downcase | append: ' ' | append: entry.journal | downcase %}
         
-        {%- if entry.type == 'unpublished' or entry.abbr == 'Pre-print' or entry_text contains 'pre-print' or entry_text contains 'preprint' -%}
+        {%- comment -%} Check abbr first for Pre-print and Workshop {%- endcomment -%}
+        {%- if entry.type == 'unpublished' or abbr_lower contains 'pre-print' or abbr_lower contains 'preprint' -%}
           {% assign pub_type_color = '#95A5A6' %}
-        {%- elsif entry.type == 'inproceedings' and (entry_text contains 'workshop' or entry.abbr contains 'Workshop') -%}
+        {%- elsif abbr_lower contains 'workshop' or entry_text contains 'workshop' -%}
           {% assign pub_type_color = '#FF6B6B' %}
         {%- elsif entry.type == 'article' -%}
           {% assign pub_type_color = '#4ECDC4' %}
