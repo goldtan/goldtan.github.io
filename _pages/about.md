@@ -26,8 +26,8 @@ latest_posts:
 
 Hi there 👋
 
-I'm Minchan Kim, a Ph.D. student in Data Science at Seoul National University (SNU).
+I'm Minchan Kim, a Ph.D. student in Data Science at Seoul National University ([SNU](https://en.snu.ac.kr/)).
 
-I received my B.B.A. & B.S. in Computer Science and my M.S. in Data Science from Seoul National University of Science and Technology (SeoulTECH), where I was advised by [Prof. Hakyeon Lee](https://scholar.google.com/citations?user=8AWlAK4AAAAJ&hl=en). I am currently pursuing my Ph.D. in Data Science at Seoul National University (SNU), advised by [Prof. Hyunwoo Park](https://scholar.google.com/citations?user=AbopKDkAAAAJ&hl=en).
+I received my B.B.A. & B.S. in Computer Science and my M.S. in Data Science from Seoul National University of Science and Technology ([SeoulTECH](https://en.seoultech.ac.kr/)), where I was advised by [Prof. Hakyeon Lee](https://scholar.google.com/citations?user=8AWlAK4AAAAJ&hl=en). I am currently pursuing my Ph.D. in Data Science at Seoul National University ([SNU](https://en.snu.ac.kr/)), advised by [Prof. Hyunwoo Park](https://scholar.google.com/citations?user=AbopKDkAAAAJ&hl=en).
 
 I'm passionate about Graph Neural Networks (GNNs), Retrieval-Augmented Generation (RAG), and Recommender Systems.
