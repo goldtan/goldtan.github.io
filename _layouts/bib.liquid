@@ -4,10 +4,26 @@
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
+        {%- comment -%} Determine publication type and color {%- endcomment -%}
+        {% assign pub_type_color = null %}
+        {% assign entry_text = entry.abbr | downcase | append: ' ' | append: entry.booktitle | downcase | append: ' ' | append: entry.note | downcase | append: ' ' | append: entry.journal | downcase %}
+        
+        {%- if entry.type == 'unpublished' or entry.abbr == 'Pre-print' or entry_text contains 'pre-print' or entry_text contains 'preprint' -%}
+          {% assign pub_type_color = '#95A5A6' %}
+        {%- elsif entry.type == 'inproceedings' and (entry_text contains 'workshop' or entry.abbr contains 'Workshop') -%}
+          {% assign pub_type_color = '#FF6B6B' %}
+        {%- elsif entry.type == 'article' -%}
+          {% assign pub_type_color = '#4ECDC4' %}
+        {%- elsif entry.type == 'inproceedings' -%}
+          {% assign pub_type_color = '#FFA07A' %}
+        {%- endif -%}
+        
         {%- if site.data.venues[entry.abbr] -%}
           {% assign venue_style = null %}
           {% if site.data.venues[entry.abbr].color != blank %}
             {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
+          {%- elsif pub_type_color -%}
+            {% assign venue_style = pub_type_color | prepend: 'style="background-color:' | append: '"' %}
           {%- endif -%}
           <abbr
             class="badge rounded w-100"
@@ -22,7 +38,11 @@
             {% endif %}
           </abbr>
         {% else %}
-          <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
+          {% assign default_style = null %}
+          {% if pub_type_color %}
+            {% assign default_style = pub_type_color | prepend: 'style="background-color:' | append: '"' %}
+          {%- endif -%}
+          <abbr class="badge rounded w-100" {% if default_style %}{{ default_style }}{% endif %}>{{ entry.abbr }}</abbr>
         {% endif %}
       {% endif %}
       {% if entry.preview %}
