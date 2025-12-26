@@ -6,6 +6,7 @@
       {%- if entry.abbr -%}
         {%- comment -%} Determine publication type and color {%- endcomment -%}
         {% assign pub_type_color = null %}
+        {% assign badge_text = entry.abbr %}
         {% assign abbr_lower = entry.abbr | downcase %}
         {% assign entry_text = abbr_lower | append: ' ' | append: entry.booktitle | downcase | append: ' ' | append: entry.note | downcase | append: ' ' | append: entry.journal | downcase %}
         
@@ -14,10 +15,13 @@
           {% assign pub_type_color = '#95A5A6' %}
         {%- elsif abbr_lower contains 'workshop' or entry_text contains 'workshop' -%}
           {% assign pub_type_color = '#FF6B6B' %}
+          {% assign badge_text = 'Workshop' %}
         {%- elsif entry.type == 'article' -%}
           {% assign pub_type_color = '#4ECDC4' %}
+          {% assign badge_text = 'International Journal' %}
         {%- elsif entry.type == 'inproceedings' -%}
           {% assign pub_type_color = '#FFA07A' %}
+          {% assign badge_text = 'International Conference' %}
         {%- endif -%}
         
         {%- if site.data.venues[entry.abbr] -%}
@@ -34,9 +38,9 @@
             {% endif -%}
           >
             {% if site.data.venues[entry.abbr].url %}
-              <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
+              <a href="{{ site.data.venues[entry.abbr].url }}">{{ badge_text }}</a>
             {% else %}
-              <div>{{- entry.abbr -}}</div>
+              <div>{{- badge_text -}}</div>
             {% endif %}
           </abbr>
         {% else %}
@@ -44,7 +48,7 @@
           {% if pub_type_color %}
             {% assign default_style = pub_type_color | prepend: 'style="background-color:' | append: '"' %}
           {%- endif -%}
-          <abbr class="badge rounded w-100" {% if default_style %}{{ default_style }}{% endif %}>{{ entry.abbr }}</abbr>
+          <abbr class="badge rounded w-100" {% if default_style %}{{ default_style }}{% endif %}>{{ badge_text }}</abbr>
         {% endif %}
       {% endif %}
       {% if entry.preview %}
