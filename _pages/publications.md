@@ -15,6 +15,13 @@ nav_order: 0
 
 <div class="publications">
 
-{% bibliography %}
+<h2>Pre-prints</h2>
+{% bibliography --query @unpublished[*] %}
+
+<h2>Conference & Workshop Papers</h2>
+{% bibliography --query @inproceedings[*] %}
+
+<h2>Journal Papers</h2>
+{% bibliography --query @article[*] %}
 
 </div>
