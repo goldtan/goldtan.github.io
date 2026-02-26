@@ -754,10 +754,15 @@ footer.sticky-bottom {
 
       .abbr {
         margin-bottom: 0.5rem;
+      }
 
-        abbr {
+      .title {
+        font-weight: bolder;
+
+        abbr.badge {
           display: inline-block;
-          margin-bottom: 0.5rem;
+          vertical-align: middle;
+          margin-right: 0.4rem;
           font-size: 0.65rem;
           font-weight: 700;
           letter-spacing: 0.05em;
@@ -765,12 +770,11 @@ footer.sticky-bottom {
           padding: 0.2em 0.65em;
           border-radius: 999px;
           white-space: nowrap;
+          color: inherit !important;
+          background-color: transparent !important;
           transition: opacity 0.2s ease;
-
-          &.badge {
-            color: inherit !important;
-            background-color: transparent !important;
-          }
+          position: relative;
+          top: -1px;
 
           a {
             color: inherit !important;
@@ -781,15 +785,6 @@ footer.sticky-bottom {
             }
           }
         }
-
-        .award {
-          color: var(--global-theme-color) !important;
-          border: 1px solid var(--global-theme-color);
-        }
-      }
-
-      .title {
-        font-weight: bolder;
       }
 
       .author {

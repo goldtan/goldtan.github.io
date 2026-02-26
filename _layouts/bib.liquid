@@ -1,78 +1,74 @@
 ---
 ---
+{%- comment -%} Determine publication type and color {%- endcomment -%}
+{% assign pub_type_color = null %}
+{% assign badge_text = entry.abbr %}
+{% assign abbr_lower = entry.abbr | downcase %}
+{% assign entry_text = abbr_lower | append: ' ' | append: entry.booktitle | downcase | append: ' ' | append: entry.note | downcase | append: ' ' | append: entry.journal | downcase %}
+
+{%- if entry.type == 'unpublished' or abbr_lower contains 'pre-print' or abbr_lower contains 'preprint' -%}
+  {% assign pub_type_color = '#6B7280' %}
+{%- elsif abbr_lower contains 'workshop' or entry_text contains 'workshop' -%}
+  {% assign pub_type_color = '#D97706' %}
+{%- elsif entry.type == 'article' -%}
+  {% assign pub_type_color = '#0D9488' %}
+{%- elsif entry.type == 'inproceedings' -%}
+  {% assign pub_type_color = '#6366F1' %}
+{%- endif -%}
+
+{%- comment -%} Build badge style {%- endcomment -%}
+{% assign badge_style = null %}
+{% assign badge_url = null %}
+{%- if site.data.venues[entry.abbr] -%}
+  {% if site.data.venues[entry.abbr].color != blank %}
+    {% assign venue_color = site.data.venues[entry.abbr].color %}
+    {% assign badge_style = venue_color | prepend: 'style="background-color:' | append: '15; color:' | append: venue_color | append: '; border: 1px solid' | append: venue_color | append: '30"' %}
+  {%- elsif pub_type_color -%}
+    {% assign badge_style = pub_type_color | prepend: 'style="background-color:' | append: '15; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '30"' %}
+  {%- endif -%}
+  {% if site.data.venues[entry.abbr].url %}
+    {% assign badge_url = site.data.venues[entry.abbr].url %}
+  {% endif %}
+{%- elsif pub_type_color -%}
+  {% assign badge_style = pub_type_color | prepend: 'style="background-color:' | append: '15; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '30"' %}
+{%- endif -%}
+
 <div class="row">
-  {% if site.enable_publication_thumbnails %}
+  {% if site.enable_publication_thumbnails and entry.preview %}
     <div class="col col-sm-2 abbr">
-      {%- if entry.abbr -%}
-        {%- comment -%} Determine publication type and color {%- endcomment -%}
-        {% assign pub_type_color = null %}
-        {% assign badge_text = entry.abbr %}
-        {% assign abbr_lower = entry.abbr | downcase %}
-        {% assign entry_text = abbr_lower | append: ' ' | append: entry.booktitle | downcase | append: ' ' | append: entry.note | downcase | append: ' ' | append: entry.journal | downcase %}
-        
-        {%- comment -%} Check abbr first for Pre-print and Workshop {%- endcomment -%}
-        {%- if entry.type == 'unpublished' or abbr_lower contains 'pre-print' or abbr_lower contains 'preprint' -%}
-          {% assign pub_type_color = '#6B7280' %}
-        {%- elsif abbr_lower contains 'workshop' or entry_text contains 'workshop' -%}
-          {% assign pub_type_color = '#D97706' %}
-        {%- elsif entry.type == 'article' -%}
-          {% assign pub_type_color = '#0D9488' %}
-        {%- elsif entry.type == 'inproceedings' -%}
-          {% assign pub_type_color = '#6366F1' %}
-        {%- endif -%}
-        
-        {%- if site.data.venues[entry.abbr] -%}
-          {% assign venue_style = null %}
-          {% if site.data.venues[entry.abbr].color != blank %}
-            {% assign venue_color = site.data.venues[entry.abbr].color %}
-            {% assign venue_style = venue_color | prepend: 'style="background-color:' | append: '15; color:' | append: venue_color | append: '; border: 1px solid' | append: venue_color | append: '30"' %}
-          {%- elsif pub_type_color -%}
-            {% assign venue_style = pub_type_color | prepend: 'style="background-color:' | append: '15; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '30"' %}
-          {%- endif -%}
-          <abbr
-            class="badge rounded-pill"
-            {% if venue_style %}
-              {{ venue_style }}
-            {% endif -%}
-          >
-            {% if site.data.venues[entry.abbr].url %}
-              <a href="{{ site.data.venues[entry.abbr].url }}">{{ badge_text }}</a>
-            {% else %}
-              <div>{{- badge_text -}}</div>
-            {% endif %}
-          </abbr>
-        {% else %}
-          {% assign default_style = null %}
-          {% if pub_type_color %}
-            {% assign default_style = pub_type_color | prepend: 'style="background-color:' | append: '15; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '30"' %}
-          {%- endif -%}
-          <abbr class="badge rounded-pill" {% if default_style %}{{ default_style }}{% endif %}>{{ badge_text }}</abbr>
-        {% endif %}
-      {% endif %}
-      {% if entry.preview %}
-        {% if entry.preview contains '://' %}
-          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
-        {% else %}
-          {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
-          {%
-            include figure.liquid
-            loading="eager"
-            path=entry_path
-            sizes = "200px"
-            class="preview z-depth-1 rounded"
-            zoomable=true
-            avoid_scaling=true
-            alt=entry.preview
-          %}
-        {% endif %}
+      {% if entry.preview contains '://' %}
+        <img class="preview z-depth-1 rounded" src="{{ entry.preview }}">
+      {% else %}
+        {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
+        {%
+          include figure.liquid
+          loading="eager"
+          path=entry_path
+          sizes = "200px"
+          class="preview z-depth-1 rounded"
+          zoomable=true
+          avoid_scaling=true
+          alt=entry.preview
+        %}
       {% endif %}
     </div>
   {% endif %}
 
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails %}col-sm-8{% else %}col-sm-10{% endif %}">
-    <!-- Title -->
-    <div class="title">{{ entry.title }}</div>
+  <div id="{{ entry.key }}" class="{% if site.enable_publication_thumbnails and entry.preview %}col-sm-8{% else %}col-sm-10{% endif %}">
+    <!-- Title with inline badge -->
+    <div class="title">
+      {%- if entry.abbr -%}
+        <abbr class="badge rounded-pill" {% if badge_style %}{{ badge_style }}{% endif %}>
+          {%- if badge_url -%}
+            <a href="{{ badge_url }}">{{ badge_text }}</a>
+          {%- else -%}
+            {{- badge_text -}}
+          {%- endif -%}
+        </abbr>
+      {%- endif -%}
+      {{ entry.title }}
+    </div>
     <!-- Author -->
     <div class="author">
       {% assign author_array_size = entry.author_array | size %}
