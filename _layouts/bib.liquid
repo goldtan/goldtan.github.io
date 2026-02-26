@@ -12,21 +12,22 @@
         
         {%- comment -%} Check abbr first for Pre-print and Workshop {%- endcomment -%}
         {%- if entry.type == 'unpublished' or abbr_lower contains 'pre-print' or abbr_lower contains 'preprint' -%}
-          {% assign pub_type_color = '#95A5A6' %}
+          {% assign pub_type_color = '#6B7280' %}
         {%- elsif abbr_lower contains 'workshop' or entry_text contains 'workshop' -%}
-          {% assign pub_type_color = '#FF6B6B' %}
+          {% assign pub_type_color = '#D97706' %}
         {%- elsif entry.type == 'article' -%}
-          {% assign pub_type_color = '#4ECDC4' %}
+          {% assign pub_type_color = '#0D9488' %}
         {%- elsif entry.type == 'inproceedings' -%}
-          {% assign pub_type_color = '#FFA07A' %}
+          {% assign pub_type_color = '#6366F1' %}
         {%- endif -%}
         
         {%- if site.data.venues[entry.abbr] -%}
           {% assign venue_style = null %}
           {% if site.data.venues[entry.abbr].color != blank %}
-            {% assign venue_style = site.data.venues[entry.abbr].color | prepend: 'style="background-color:' | append: '"' %}
+            {% assign venue_color = site.data.venues[entry.abbr].color %}
+            {% assign venue_style = venue_color | prepend: 'style="background-color:' | append: '15; color:' | append: venue_color | append: '; border: 1px solid' | append: venue_color | append: '30"' %}
           {%- elsif pub_type_color -%}
-            {% assign venue_style = pub_type_color | prepend: 'style="background-color:' | append: '20; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '40"' %}
+            {% assign venue_style = pub_type_color | prepend: 'style="background-color:' | append: '15; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '30"' %}
           {%- endif -%}
           <abbr
             class="badge rounded-pill"
@@ -43,7 +44,7 @@
         {% else %}
           {% assign default_style = null %}
           {% if pub_type_color %}
-            {% assign default_style = pub_type_color | prepend: 'style="background-color:' | append: '20; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '40"' %}
+            {% assign default_style = pub_type_color | prepend: 'style="background-color:' | append: '15; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '30"' %}
           {%- endif -%}
           <abbr class="badge rounded-pill" {% if default_style %}{{ default_style }}{% endif %}>{{ badge_text }}</abbr>
         {% endif %}

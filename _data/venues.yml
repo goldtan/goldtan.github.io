@@ -1,9 +1,18 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+"Info Vis":
+  url: https://journals.sagepub.com/home/ivi
+  color: "#0D9488"
 
-"PhysRev":
-  url: https://journals.aps.org/
+"IEEE Access":
+  url: https://ieeeaccess.ieee.org/
+  color: "#059669"
 
-"Vision":
-  color: "#009f36"
+"NeurIPS Workshop":
+  url: https://neurips.cc/
+  color: "#D97706"
+
+"AAAI Workshop":
+  url: https://aaai.org/
+  color: "#F59E0B"
+
+"Pre-print":
+  color: "#6B7280"
