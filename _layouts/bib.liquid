@@ -4,7 +4,17 @@
 {% assign pub_type_color = null %}
 {% assign badge_text = entry.abbr %}
 {% assign abbr_lower = entry.abbr | downcase %}
-{% assign entry_text = abbr_lower | append: ' ' | append: entry.booktitle | downcase | append: ' ' | append: entry.note | downcase | append: ' ' | append: entry.journal | downcase %}
+{% assign entry_text = abbr_lower
+  | append: ' '
+  | append: entry.booktitle
+  | downcase
+  | append: ' '
+  | append: entry.note
+  | downcase
+  | append: ' '
+  | append: entry.journal
+  | downcase
+%}
 
 {%- if entry.type == 'unpublished' or abbr_lower contains 'pre-print' or abbr_lower contains 'preprint' -%}
   {% assign pub_type_color = '#6B7280' %}
@@ -60,7 +70,12 @@
     <div class="title">
       {{ entry.title }}
       {%- if entry.abbr -%}
-        <abbr class="badge" {% if badge_style %}{{ badge_style }}{% endif %}>
+        <abbr
+          class="badge"
+          {% if badge_style %}
+            {{- badge_style -}}
+          {% endif %}
+        >
           {%- if badge_url -%}
             <a href="{{ badge_url }}">{{ badge_text }}</a>
           {%- else -%}
