@@ -767,8 +767,13 @@ footer.sticky-bottom {
           white-space: nowrap;
           transition: opacity 0.2s ease;
 
+          &.badge {
+            color: inherit !important;
+            background-color: transparent !important;
+          }
+
           a {
-            color: inherit;
+            color: inherit !important;
 
             &:hover {
               text-decoration: none;
