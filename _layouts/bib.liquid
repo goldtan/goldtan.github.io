@@ -22,15 +22,15 @@
 {%- if site.data.venues[entry.abbr] -%}
   {% if site.data.venues[entry.abbr].color != blank %}
     {% assign venue_color = site.data.venues[entry.abbr].color %}
-    {% assign badge_style = venue_color | prepend: 'style="background-color:' | append: '40; color:' | append: venue_color | append: '; border: 1px solid' | append: venue_color | append: '60"' %}
+    {% assign badge_style = venue_color | prepend: 'style="background-color:' | append: '"' %}
   {%- elsif pub_type_color -%}
-    {% assign badge_style = pub_type_color | prepend: 'style="background-color:' | append: '40; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '60"' %}
+    {% assign badge_style = pub_type_color | prepend: 'style="background-color:' | append: '"' %}
   {%- endif -%}
   {% if site.data.venues[entry.abbr].url %}
     {% assign badge_url = site.data.venues[entry.abbr].url %}
   {% endif %}
 {%- elsif pub_type_color -%}
-  {% assign badge_style = pub_type_color | prepend: 'style="background-color:' | append: '40; color:' | append: pub_type_color | append: '; border: 1px solid' | append: pub_type_color | append: '60"' %}
+  {% assign badge_style = pub_type_color | prepend: 'style="background-color:' | append: '"' %}
 {%- endif -%}
 
 <div class="row">
