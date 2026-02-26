@@ -157,6 +157,7 @@ collections:
 # -----------------------------------------------------------------------------
 
 # Markdown and syntax highlight
+future: true
 markdown: kramdown
 highlighter: rouge
 kramdown:
