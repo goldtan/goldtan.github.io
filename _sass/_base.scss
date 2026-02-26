@@ -757,12 +757,14 @@ footer.sticky-bottom {
 
         abbr {
           display: inline-block;
-          background-color: var(--global-theme-color);
           margin-bottom: 0.5rem;
-          color: var(--global-card-bg-color) !important;
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.02em;
+          padding: 0.25em 0.75em;
 
           a {
-            color: white;
+            color: inherit;
 
             &:hover {
               text-decoration: none;
