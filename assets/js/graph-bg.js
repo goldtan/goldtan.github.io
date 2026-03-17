@@ -1,43 +1,63 @@
 (function () {
   var canvas = document.getElementById("graph-bg");
   if (!canvas) return;
-
   var ctx = canvas.getContext("2d");
   var nodes = [];
-  var NUM_NODES = 60;
-  var CONNECT_DIST = 120;
+  var NUM = 80;
+  var DIST = 160;
   var mouse = { x: -9999, y: -9999 };
-  var raf;
 
   function resize() {
-    var rect = canvas.parentElement.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+    var dpr = window.devicePixelRatio || 1;
+    var w = window.innerWidth, h = window.innerHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width = w + "px";
+    canvas.style.height = h + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
-  function isDark() {
+  function dark() {
     return document.documentElement.getAttribute("data-theme") === "dark";
   }
 
-  function initNodes() {
+  function init() {
+    var w = window.innerWidth, h = window.innerHeight;
     nodes = [];
-    for (var i = 0; i < NUM_NODES; i++) {
+    for (var i = 0; i < NUM; i++) {
       nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        r: Math.random() * 1.5 + 1,
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 2 + 1,
       });
     }
   }
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  function frame() {
+    var w = window.innerWidth, h = window.innerHeight;
+    ctx.clearRect(0, 0, w, h);
+    var d = dark();
+    var col = d ? "160,174,192" : "74,85,104";
 
-    var dark = isDark();
-    var nodeColor = dark ? "rgba(160,174,192," : "rgba(74,85,104,";
-    var lineColor = dark ? "rgba(160,174,192," : "rgba(74,85,104,";
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      var dx = n.x - mouse.x, dy = n.y - mouse.y;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120 && dist > 0) {
+        n.vx += dx / dist * 0.06;
+        n.vy += dy / dist * 0.06;
+      }
+      n.vx *= 0.988;
+      n.vy *= 0.988;
+      n.x += n.vx;
+      n.y += n.vy;
+      if (n.x < -20) n.x = w + 20;
+      if (n.x > w + 20) n.x = -20;
+      if (n.y < -20) n.y = h + 20;
+      if (n.y > h + 20) n.y = -20;
+    }
 
     // edges
     for (var i = 0; i < nodes.length; i++) {
@@ -45,13 +65,15 @@
         var dx = nodes[i].x - nodes[j].x;
         var dy = nodes[i].y - nodes[j].y;
         var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < CONNECT_DIST) {
-          var alpha = (1 - dist / CONNECT_DIST) * 0.15;
+        if (dist < DIST) {
+          var a = (1 - dist / DIST) * 0.18;
+          var mx = (nodes[i].x + nodes[j].x) / 2;
+          var my = (nodes[i].y + nodes[j].y) / 2 - dist * 0.06;
           ctx.beginPath();
-          ctx.strokeStyle = lineColor + alpha + ")";
-          ctx.lineWidth = 0.5;
+          ctx.strokeStyle = "rgba(" + col + "," + a + ")";
+          ctx.lineWidth = 0.6;
           ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.quadraticCurveTo(mx, my, nodes[j].x, nodes[j].y);
           ctx.stroke();
         }
       }
@@ -59,66 +81,22 @@
 
     // nodes
     for (var i = 0; i < nodes.length; i++) {
-      var n = nodes[i];
       ctx.beginPath();
-      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-      ctx.fillStyle = nodeColor + "0.3)";
+      ctx.arc(nodes[i].x, nodes[i].y, nodes[i].r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(" + col + ",0.3)";
       ctx.fill();
     }
-  }
 
-  function update() {
-    for (var i = 0; i < nodes.length; i++) {
-      var n = nodes[i];
-
-      // gentle mouse repulsion
-      var dx = n.x - mouse.x;
-      var dy = n.y - mouse.y;
-      var dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 100 && dist > 0) {
-        var force = (100 - dist) / 100 * 0.3;
-        n.vx += (dx / dist) * force;
-        n.vy += (dy / dist) * force;
-      }
-
-      // damping
-      n.vx *= 0.99;
-      n.vy *= 0.99;
-
-      n.x += n.vx;
-      n.y += n.vy;
-
-      // wrap around
-      if (n.x < -10) n.x = canvas.width + 10;
-      if (n.x > canvas.width + 10) n.x = -10;
-      if (n.y < -10) n.y = canvas.height + 10;
-      if (n.y > canvas.height + 10) n.y = -10;
-    }
-  }
-
-  function loop() {
-    update();
-    draw();
-    raf = requestAnimationFrame(loop);
+    requestAnimationFrame(frame);
   }
 
   resize();
-  initNodes();
-  loop();
+  init();
+  frame();
 
-  window.addEventListener("resize", function () {
-    resize();
-    initNodes();
-  });
-
-  canvas.parentElement.addEventListener("mousemove", function (e) {
-    var rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
-  });
-
-  canvas.parentElement.addEventListener("mouseleave", function () {
-    mouse.x = -9999;
-    mouse.y = -9999;
+  window.addEventListener("resize", function () { resize(); init(); });
+  document.addEventListener("mousemove", function (e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
   });
 })();

@@ -38,15 +38,32 @@ table {
 a,
 table.table a {
   color: var(--global-theme-color);
+  text-decoration: none;
+  background-image: linear-gradient(var(--global-theme-color), var(--global-theme-color));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s ease;
 
   &:hover {
     color: var(--global-theme-color);
-    text-decoration: underline;
+    text-decoration: none;
+    background-size: 100% 1px;
   }
 
   &:hover:after :not(.nav-item.dropdown) {
     width: 100%;
   }
+}
+
+// Exclude nav links, buttons, and icons from underline animation
+.navbar a,
+.nav-link,
+.btn,
+.social a,
+.contact-icons a,
+.card a {
+  background-image: none !important;
 }
 
 .table-dark {
@@ -1516,4 +1533,104 @@ figure.cover {
 
 mjx-container[jax="CHTML"][display="true"] {
   overflow-x: auto;
+}
+
+// =========================================================================
+// Interactive elements
+// =========================================================================
+
+// Custom cursor
+#cursor-dot {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: var(--global-theme-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
+
+  &.cursor-hover {
+    opacity: 0;
+  }
+}
+
+#cursor-ring {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--global-theme-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+  opacity: 0.5;
+
+  &.cursor-hover {
+    width: 50px;
+    height: 50px;
+    opacity: 0.3;
+  }
+}
+
+// Hide default cursor when custom cursor is active
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+
+  a, button, input, .card, .nav-link {
+    cursor: none;
+  }
+}
+
+// Scroll fade-in
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Page transition
+body {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.page-loaded {
+    opacity: 1;
+  }
+
+  &.page-exit {
+    opacity: 0;
+  }
+}
+
+// Card tilt
+.card.hoverable {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  }
+}
+
+// Typing cursor blink
+#typing-subtitle::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+  color: var(--global-theme-color);
+  font-weight: 300;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
