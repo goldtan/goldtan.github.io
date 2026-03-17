@@ -260,9 +260,12 @@
     function hittest() {
       mouse.hit = null;
       var cx = cv._w() / 2, cy = cv._h() / 2;
+      ctx.font = "500 11px Inter, -apple-system, sans-serif";
       for (var i = 0; i < nodes.length; i++) {
         var nx = cx + nodes[i].x, ny = cy + nodes[i].y;
-        if (Math.abs(mouse.x - nx) < 62 && Math.abs(mouse.y - ny) < 22) {
+        var tw = ctx.measureText(nodes[i].title).width;
+        var hw = Math.max(tw + 28, 100) / 2;
+        if (Math.abs(mouse.x - nx) < hw && Math.abs(mouse.y - ny) < 22) {
           mouse.hit = i; break;
         }
       }
@@ -317,12 +320,18 @@
         }
       });
 
-      // paper cards
+      // paper cards — measure text to size cards dynamically
       nodes.forEach(function (n, i) {
         var active = i === mouse.hit || linked(i);
         var nx = cx + n.x, ny = cy + n.y;
-        var pw = 120, ph = 40;
         var isHovered = i === mouse.hit;
+
+        ctx.font = "500 11px Inter, -apple-system, sans-serif";
+        var titleW = ctx.measureText(n.title).width;
+        ctx.font = "400 9px Inter, -apple-system, sans-serif";
+        var venueW = ctx.measureText(n.venue).width;
+        var pw = Math.max(titleW, venueW) + 28;
+        var ph = 40;
 
         ctx.globalAlpha = mouse.hit !== null && !active ? 0.12 : 1;
 
