@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
+        },{id: "nav-networks",
+          title: "networks",
+          description: "interactive visualizations of my research network",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/networks/";
+          },
         },{id: "nav-cv",
           title: "cv",
           description: "Curriculum Vitae",
@@ -318,17 +325,6 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2021/distill/";
-          
-        },
-      },{id: "post-a-post-with-twitter",
-        
-          title: "a post with twitter",
-        
-        description: "an example of a blog post with twitter",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2020/twitter/";
           
         },
       },{id: "post-a-post-with-disqus-comments",
