@@ -983,7 +983,7 @@ html.transition,
 html.transition *,
 html.transition *:before,
 html.transition *:after {
-  transition: all 750ms !important;
+  transition: all 400ms ease !important;
   transition-delay: 0 !important;
 }
 

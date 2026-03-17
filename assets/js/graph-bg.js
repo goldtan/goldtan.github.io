@@ -3,8 +3,9 @@
   if (!canvas) return;
   var ctx = canvas.getContext("2d");
   var nodes = [];
-  var NUM = 80;
-  var DIST = 160;
+  var isMobile = window.innerWidth < 768;
+  var NUM = isMobile ? 30 : 80;
+  var DIST = isMobile ? 120 : 160;
   var mouse = { x: -9999, y: -9999 };
 
   function resize() {
