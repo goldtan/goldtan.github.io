@@ -8,7 +8,7 @@ middle_name:
 last_name: Kim
 contact_note: >
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Minchan Kim's research page — Graph Neural Networks, RAG, and Recommender Systems @ Seoul National University.
 footer_text: >
   built with graphs and coffee.
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
@@ -120,12 +120,6 @@ disqus_shortname: al-folio # put your disqus shortname
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@al-folio/feed
-  - name: Google Blog
-    posts:
-      - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
-        published_date: 2024-05-14
 
 # -----------------------------------------------------------------------------
 # Newsletter

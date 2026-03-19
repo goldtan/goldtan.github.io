@@ -12,6 +12,18 @@
   var bursts = [];
   var nodes = [];
 
+  // ── Smooth color transition ──────────────────────────────────────────
+  var currentR = 74, currentG = 85, currentB = 104;
+  function lerpColor() {
+    var d = document.documentElement.getAttribute("data-theme") === "dark";
+    var tR = d ? 180 : 74, tG = d ? 190 : 85, tB = d ? 210 : 104;
+    var speed = 0.03;
+    currentR += (tR - currentR) * speed;
+    currentG += (tG - currentG) * speed;
+    currentB += (tB - currentB) * speed;
+    return Math.round(currentR) + "," + Math.round(currentG) + "," + Math.round(currentB);
+  }
+
   // ── Constellation shapes (relative offsets) ──────────────────────────
   var shapes = [
     { pts: [[0,-1],[-.9,.7],[.9,.7]], edges: [[0,1],[1,2],[2,0]] },
@@ -143,8 +155,7 @@
   function frame() {
     var w = window.innerWidth, h = window.innerHeight;
     ctx.clearRect(0, 0, w, h);
-    var d = dark();
-    var col = d ? "180,190,210" : "74,85,104";
+    var col = lerpColor();
     var now = Date.now();
 
     if (partyMode && now - partyStart > PARTY_DURATION) partyMode = false;

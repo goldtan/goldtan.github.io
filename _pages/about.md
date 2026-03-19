@@ -24,10 +24,6 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Hi there 👋
+Hi there 👋 I'm Minchan Kim, a Ph.D. candidate in Data Science at [SNU](https://en.snu.ac.kr/), advised by [Prof. Hyunwoo Park](https://scholar.google.com/citations?user=AbopKDkAAAAJ&hl=en) at the [DIAL Lab](https://dial.snu.ac.kr). Previously, I received my B.B.A. & B.S. in CS and M.S. in Data Science from [SeoulTECH](https://en.seoultech.ac.kr/) with [Prof. Hakyeon Lee](https://scholar.google.com/citations?user=8AWlAK4AAAAJ&hl=en).
 
-I'm Minchan Kim, a Ph.D. student in Data Science at Seoul National University ([SNU](https://en.snu.ac.kr/)).
-
-I received my B.B.A. & B.S. in Computer Science and my M.S. in Data Science from Seoul National University of Science and Technology ([SeoulTECH](https://en.seoultech.ac.kr/)), where I was advised by [Prof. Hakyeon Lee](https://scholar.google.com/citations?user=8AWlAK4AAAAJ&hl=en) at the [D&BI Lab](https://inno.seoultech.ac.kr/). I am currently pursuing my Ph.D. in Data Science at Seoul National University ([SNU](https://en.snu.ac.kr/)), advised by [Prof. Hyunwoo Park](https://scholar.google.com/citations?user=AbopKDkAAAAJ&hl=en) at the [DIAL Lab](https://dial.snu.ac.kr).
-
-I'm passionate about Graph Neural Networks (GNNs), Retrieval-Augmented Generation (RAG), and Recommender Systems.
+**Interests** — GNNs, RAG, Recommender Systems, Knowledge Graphs, Spatio-Temporal Learning
