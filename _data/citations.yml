@@ -1,6 +1,10 @@
 metadata:
-  last_updated: '2026-03-23'
+  last_updated: '2026-04-22'
 papers:
+  _i4rx-kAAAAJ:2osOgNQ5qMEC:
+    citations: 1
+    title: 'InteractiveKG: Transparent and user-controllable knowledge graph reasoning'
+    year: '2026'
   _i4rx-kAAAAJ:9yKSN-GCB0IC:
     citations: 1
     title: 'Spatio-Temporal Graphs Beyond Grids: Benchmark for Maritime Anomaly Detection'
