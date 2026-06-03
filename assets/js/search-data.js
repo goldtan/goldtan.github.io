@@ -42,6 +42,9 @@ ninja.data = [{
           section: "News",},{id: "news-a-paper-got-accepted-at-information-visualization-special-issue-from-pacificvis-2026-vis-meets-ai-workshop",
           title: 'A paper got accepted at Information Visualization (Special Issue from PacificVis 2026 Vis...',
           description: "",
+          section: "News",},{id: "news-a-paper-from-my-master-s-research-got-accepted-at-annals-of-data-science",
+          title: 'A paper from my master’s research got accepted at Annals of Data Science....',
+          description: "",
           section: "News",},{
         id: 'social-email',
         title: 'email',
