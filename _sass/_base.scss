@@ -1634,3 +1634,9 @@ body {
     opacity: 0;
   }
 }
+
+// Flatten MDBootstrap's drop shadow on badges (venue tags, tab count
+// pills, etc.) for a consistent, flat look across the site.
+.badge {
+  box-shadow: none !important;
+}
