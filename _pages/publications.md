@@ -20,10 +20,10 @@ nav_order: 0
 
 <ul class="nav nav-tabs mt-4" id="pubTabs" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="conf-tab" data-bs-toggle="tab" data-bs-target="#conf-pane" type="button" role="tab" aria-controls="conf-pane" aria-selected="true">Conference &amp; Workshop Papers</button>
+    <a class="nav-link active" id="conf-tab" data-toggle="tab" href="#conf-pane" role="tab" aria-controls="conf-pane" aria-selected="true">Conference &amp; Workshop Papers</a>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="journal-tab" data-bs-toggle="tab" data-bs-target="#journal-pane" type="button" role="tab" aria-controls="journal-pane" aria-selected="false">Journal Papers</button>
+    <a class="nav-link" id="journal-tab" data-toggle="tab" href="#journal-pane" role="tab" aria-controls="journal-pane" aria-selected="false">Journal Papers</a>
   </li>
 </ul>
 <div class="tab-content mt-3" id="pubTabsContent">
