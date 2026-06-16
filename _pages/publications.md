@@ -18,10 +18,21 @@ nav_order: 0
 <h2>Working Papers</h2>
 {% bibliography -q @unpublished %}
 
-<h2>Conference & Workshop Papers</h2>
-{% bibliography -q @inproceedings %}
-
-<h2>Journal Papers</h2>
-{% bibliography -q @article %}
+<ul class="nav nav-tabs mt-4" id="pubTabs" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="conf-tab" data-bs-toggle="tab" data-bs-target="#conf-pane" type="button" role="tab" aria-controls="conf-pane" aria-selected="true">Conference &amp; Workshop Papers</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="journal-tab" data-bs-toggle="tab" data-bs-target="#journal-pane" type="button" role="tab" aria-controls="journal-pane" aria-selected="false">Journal Papers</button>
+  </li>
+</ul>
+<div class="tab-content mt-3" id="pubTabsContent">
+  <div class="tab-pane fade show active" id="conf-pane" role="tabpanel" aria-labelledby="conf-tab">
+    {% bibliography -q @inproceedings %}
+  </div>
+  <div class="tab-pane fade" id="journal-pane" role="tabpanel" aria-labelledby="journal-tab">
+    {% bibliography -q @article %}
+  </div>
+</div>
 
 </div>
