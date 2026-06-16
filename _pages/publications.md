@@ -48,13 +48,17 @@ nav_order: 0
       var pane = document.getElementById(pair[1]);
       if (!btn || !pane) return;
       var n = pane.querySelectorAll(".bibliography > li").length;
-      if (n)
+      if (n) {
+        btn.style.display = "inline-flex";
+        btn.style.alignItems = "center";
+        btn.style.gap = "0.45em";
         btn.insertAdjacentHTML(
           "beforeend",
-          ' <span class="badge" style="background-color: color-mix(in srgb, var(--global-theme-color) 14%, transparent); color: var(--global-theme-color); vertical-align: middle; font-size: 0.72em; font-weight: 700; border-radius: 10rem; padding: 0.25em 0.6em;">' +
+          '<span class="badge" style="background-color: color-mix(in srgb, var(--global-theme-color) 14%, transparent); color: var(--global-theme-color) !important; font-size: 0.72em; font-weight: 700; border-radius: 10rem; padding: 0.25em 0.6em; line-height: 1;">' +
             n +
             "</span>",
         );
+      }
     });
   });
 </script>
