@@ -48,7 +48,13 @@ nav_order: 0
       var pane = document.getElementById(pair[1]);
       if (!btn || !pane) return;
       var n = pane.querySelectorAll(".bibliography > li").length;
-      if (n) btn.insertAdjacentHTML("beforeend", ' <span class="badge badge-secondary">' + n + "</span>");
+      if (n)
+        btn.insertAdjacentHTML(
+          "beforeend",
+          ' <span class="badge" style="background-color: var(--global-theme-color); color: #fff; vertical-align: middle; font-size: 0.7em; font-weight: 600;">' +
+            n +
+            "</span>",
+        );
     });
   });
 </script>
