@@ -36,3 +36,19 @@ nav_order: 0
 </div>
 
 </div>
+
+<script>
+  // Show the number of entries on each tab so counts are visible before opening.
+  document.addEventListener("DOMContentLoaded", function () {
+    [
+      ["conf-tab", "conf-pane"],
+      ["journal-tab", "journal-pane"],
+    ].forEach(function (pair) {
+      var btn = document.getElementById(pair[0]);
+      var pane = document.getElementById(pair[1]);
+      if (!btn || !pane) return;
+      var n = pane.querySelectorAll(".bibliography > li").length;
+      if (n) btn.insertAdjacentHTML("beforeend", ' <span class="badge badge-secondary">' + n + "</span>");
+    });
+  });
+</script>
