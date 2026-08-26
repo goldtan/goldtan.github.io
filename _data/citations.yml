@@ -1,8 +1,8 @@
 metadata:
-  last_updated: '2026-07-17'
+  last_updated: '2026-08-26'
 papers:
   _i4rx-kAAAAJ:2osOgNQ5qMEC:
-    citations: 1
+    citations: 3
     title: 'InteractiveKG: Transparent and user-controllable knowledge graph reasoning'
     year: '2026'
   _i4rx-kAAAAJ:9yKSN-GCB0IC:
@@ -13,7 +13,11 @@ papers:
     citations: 1
     title: Adaptive Sparsified Graph Learning Framework for Vessel Behavior Anomalies
     year: '2025'
+  _i4rx-kAAAAJ:qjMakFHDy7sC:
+    citations: 0
+    title: 'Treasure Hunting in the Talent Ocean: Automating Talent Acquisition for Competent Developers from GitHub'
+    year: '2026'
   _i4rx-kAAAAJ:u-x6o8ySG0sC:
-    citations: 3
-    title: 'STGVAD: Spatio-Temporal Graph-Based Vessel Behavior Anomaly Detection'
+    citations: 5
+    title: 'STGVAD: spatio-temporal graph-based vessel behavior anomaly detection'
     year: '2025'
