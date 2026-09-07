@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-08-26'
+  last_updated: '2026-09-07'
 papers:
   _i4rx-kAAAAJ:2osOgNQ5qMEC:
     citations: 3
@@ -18,6 +18,6 @@ papers:
     title: 'Treasure Hunting in the Talent Ocean: Automating Talent Acquisition for Competent Developers from GitHub'
     year: '2026'
   _i4rx-kAAAAJ:u-x6o8ySG0sC:
-    citations: 5
+    citations: 6
     title: 'STGVAD: spatio-temporal graph-based vessel behavior anomaly detection'
     year: '2025'
