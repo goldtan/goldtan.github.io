@@ -2,7 +2,7 @@
   var el = document.getElementById("typing-subtitle");
   if (!el) return;
 
-  var words = ["Graph Neural Networks", "Retrieval-Augmented Generation", "Recommender Systems", "Knowledge Graphs"];
+  var words = ["Graph Learning", "Recommender Systems", "AI Agents"];
   var wordIndex = 0;
   var charIndex = 0;
   var isDeleting = false;
