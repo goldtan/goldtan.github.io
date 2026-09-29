@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Researcher in GNNs, RAG & RecSys @ SNU
+subtitle: Graph Learning · Recommender Systems · AI Agents @ SNU
 
 profile:
   align: right
@@ -26,4 +26,4 @@ latest_posts:
 
 Hi there 👋 I'm Minchan Kim, a Ph.D. candidate in Data Science at [SNU](https://en.snu.ac.kr/), advised by [Prof. Hyunwoo Park](https://scholar.google.com/citations?user=AbopKDkAAAAJ&hl=en) at the [DIAL Lab](https://dial.snu.ac.kr). Previously, I received my B.B.A. & B.S. in CS and M.S. in Data Science from [SeoulTECH](https://en.seoultech.ac.kr/) with [Prof. Hakyeon Lee](https://scholar.google.com/citations?user=8AWlAK4AAAAJ&hl=en).
 
-**Interests** — GNNs, RAG, Recommender Systems, Knowledge Graphs, Spatio-Temporal Learning
+My research focuses on learning from **structured data and feedback**, spanning graph learning, recommender systems, and AI agents.

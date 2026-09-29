@@ -8,7 +8,7 @@ middle_name:
 last_name: Kim
 contact_note: >
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Minchan Kim's research page — Graph Neural Networks, RAG, and Recommender Systems @ Seoul National University.
+  Minchan Kim's research page — Graph Learning, Recommender Systems, and AI Agents @ Seoul National University.
 footer_text: >
   built with graphs and coffee.
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty

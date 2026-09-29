@@ -26,8 +26,6 @@
 - title: Research Interests
   type: list
   contents:
-    - Graph Neural Networks (GNNs)
-    - Retrieval-Augmented Generation (RAG)
+    - Graph Learning
     - Recommender Systems
-    - Knowledge Graphs
-    - Spatio-Temporal Graph Learning
+    - AI Agents
