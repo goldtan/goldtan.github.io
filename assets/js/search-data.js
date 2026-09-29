@@ -16,13 +16,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/publications/";
           },
-        },{id: "nav-networks",
-          title: "networks",
-          description: "interactive visualizations of my research network",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/networks/";
-          },
         },{id: "nav-cv",
           title: "cv",
           description: "Curriculum Vitae",
