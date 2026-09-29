@@ -39,9 +39,14 @@ body.sticky-bottom-footer {
   img {
     width: 100%;
 
-    &.rounded-circle {
+    &.rounded-circle,
+    &.rounded {
       aspect-ratio: 1 / 1;
       object-fit: cover;
+    }
+
+    &.rounded {
+      object-position: top;
     }
   }
 }
