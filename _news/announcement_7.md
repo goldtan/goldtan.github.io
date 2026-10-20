@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-A new preprint on curriculum learning for long-horizon LLM agents is out on arXiv.
+A new preprint is out on arXiv.
