@@ -23,13 +23,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "news-a-paper-got-accepted-at-aaai-2025-workshop-on-anomaly-detection-in-scientific-domains",
-          title: 'A paper got accepted at AAAI 2025 Workshop on Anomaly Detection in Scientific...',
-          description: "",
-          section: "News",},{id: "news-a-paper-got-accepted-at-ieee-access",
-          title: 'A paper got accepted at IEEE Access.',
-          description: "",
-          section: "News",},{id: "news-a-paper-got-accepted-at-information-visualization-special-issue-from-pacificvis-2026-vis-meets-ai-workshop",
+        },{id: "news-a-paper-got-accepted-at-information-visualization-special-issue-from-pacificvis-2026-vis-meets-ai-workshop",
           title: 'A paper got accepted at Information Visualization (Special Issue from PacificVis 2026 Vis...',
           description: "",
           section: "News",},{id: "news-a-paper-from-my-master-s-research-got-accepted-at-annals-of-data-science",
