@@ -20,18 +20,19 @@ nav_order: 0
 
 <ul class="nav nav-tabs mt-4" id="pubTabs" role="tablist">
   <li class="nav-item" role="presentation">
-    <button type="button" class="nav-link active" id="conf-tab" data-toggle="tab" data-target="#conf-pane" role="tab" aria-controls="conf-pane" aria-selected="true">Conference &amp; Workshop Papers</button>
+    <button type="button" class="nav-link active" id="main-tab" data-toggle="tab" data-target="#main-pane" role="tab" aria-controls="main-pane" aria-selected="true">Journal &amp; Conference Papers</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button type="button" class="nav-link" id="journal-tab" data-toggle="tab" data-target="#journal-pane" role="tab" aria-controls="journal-pane" aria-selected="false">Journal Papers</button>
+    <button type="button" class="nav-link" id="ws-tab" data-toggle="tab" data-target="#ws-pane" role="tab" aria-controls="ws-pane" aria-selected="false">Workshop Papers</button>
   </li>
 </ul>
 <div class="tab-content mt-3" id="pubTabsContent">
-  <div class="tab-pane fade show active" id="conf-pane" role="tabpanel" aria-labelledby="conf-tab">
-    {% bibliography -q @inproceedings %}
-  </div>
-  <div class="tab-pane fade" id="journal-pane" role="tabpanel" aria-labelledby="journal-tab">
+  <div class="tab-pane fade show active" id="main-pane" role="tabpanel" aria-labelledby="main-tab">
     {% bibliography -q @article %}
+    {% bibliography -q @inproceedings[abbr=C] %}
+  </div>
+  <div class="tab-pane fade" id="ws-pane" role="tabpanel" aria-labelledby="ws-tab">
+    {% bibliography -q @inproceedings[abbr=W] %}
   </div>
 </div>
 
@@ -41,8 +42,8 @@ nav_order: 0
   // Show the number of entries on each tab so counts are visible before opening.
   document.addEventListener("DOMContentLoaded", function () {
     [
-      ["conf-tab", "conf-pane"],
-      ["journal-tab", "journal-pane"],
+      ["main-tab", "main-pane"],
+      ["ws-tab", "ws-pane"],
     ].forEach(function (pair) {
       var btn = document.getElementById(pair[0]);
       var pane = document.getElementById(pair[1]);
