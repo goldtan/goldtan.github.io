@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-A new preprint is out on arXiv: Where to Start, How to Move: Analyzing Curricula under GRPO for Long-Horizon LLM Agents.
+A new preprint on curriculum learning for long-horizon LLM agents is out on arXiv.

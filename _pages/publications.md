@@ -28,11 +28,10 @@ nav_order: 0
 </ul>
 <div class="tab-content mt-3" id="pubTabsContent">
   <div class="tab-pane fade show active" id="main-pane" role="tabpanel" aria-labelledby="main-tab">
-    {% bibliography -q @article %}
-    {% bibliography -q @inproceedings[abbr=C] %}
+    {% bibliography -q @*[group=main] %}
   </div>
   <div class="tab-pane fade" id="ws-pane" role="tabpanel" aria-labelledby="ws-tab">
-    {% bibliography -q @inproceedings[abbr=W] %}
+    {% bibliography -q @*[group=workshop] %}
   </div>
 </div>
 
