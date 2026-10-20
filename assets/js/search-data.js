@@ -32,8 +32,8 @@ ninja.data = [{
           section: "News",},{id: "news-a-paper-got-accepted-at-neurips-2026-evaluations-and-datasets-track",
           title: 'A paper got accepted at NeurIPS 2026 Evaluations and Datasets Track.',
           description: "",
-          section: "News",},{id: "news-a-new-preprint-is-out-on-arxiv-where-to-start-how-to-move-analyzing-curricula-under-grpo-for-long-horizon-llm-agents",
-          title: 'A new preprint is out on arXiv: Where to Start, How to Move:...',
+          section: "News",},{id: "news-a-new-preprint-on-curriculum-learning-for-long-horizon-llm-agents-is-out-on-arxiv",
+          title: 'A new preprint on curriculum learning for long-horizon LLM agents is out on...',
           description: "",
           section: "News",},{
         id: 'social-email',
